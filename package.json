@@ -2,15 +2,15 @@
   "name": "webcomponents",
   "version": "1.0.0",
   "description": "Project to check the life cycle of web components and the testing of a complex web component that connects to an API",
-  "keywords": [],
+  "keywords": ["web", "components", "webcomponents", "api", "ull"],
   "author": "Edwin Plasencia Hernández",
   "license": "ISC",
-  "source": "src/index.html",
+  "source": "src/pages/index.html",
   "scripts": {
     "clean": "rm -rf ./dist",
     "start": "parcel",
     "build": "parcel build --public-url /SYTWC-WebComponents/",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",

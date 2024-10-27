@@ -2,15 +2,15 @@
 
 Project to check the life cycle of web components and the testing of a complex web component that connects to an API
 
-## Building and running
+## Installation and usage
 
-First install dependencies:
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-To run in hot module reloading mode:
+To run in localhost:
 
 ```sh
 npm start
@@ -34,7 +34,6 @@ To push and update gh-pages:
 npm run deploy
 ```
 
-## Credits
+## Author
 
-Made with [createapp.dev](https://createapp.dev/)
-
+Edwin Plasencia Hernández
