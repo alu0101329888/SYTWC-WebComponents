@@ -1,41 +1,43 @@
 class myWebComponent extends HTMLElement {
 
-    static observedAttributes = ["color"];
-
     constructor() {
         super();
         let webcomponent: HTMLElement = document.createElement("p");
         webcomponent.innerHTML = "[WEB COMPONENT]";
         const shadow: ShadowRoot = this.attachShadow({ mode: 'closed' });
         shadow.appendChild(webcomponent);
-        console.log("Creado");
+        console.log("Created");
     }
 
+    static get observedAttributes() {
+        return ["color"];
+    } 
+
     connectedCallback() {
-        console.log("Adjuntado al DOM");
+        console.log("Added to DOM");
     }
 
     disconnectedCallback() {
-        console.log("Separado del DOM");
+        console.log("Removed from DOM");
     }
 
     attributeChangedCallback() {
-        console.log("Cambio en los atributos");
+        console.log("Changed attributes");
     }
 };
 
 customElements.define('my-web-component', myWebComponent);
-let add: HTMLElement | null = document.getElementById("añadir");
+let add: HTMLElement | null = document.getElementById("add");
 if (add != null) {
-    add.innerHTML = "Añadir webcomponent";
+    add.innerHTML = "Add webcomponent";
     add.onclick = function () {
         let webcomponent: HTMLElement = document.createElement('my-web-component');
         document.body.appendChild(webcomponent);
     }
 }
-let rem: HTMLElement | null = document.getElementById("eliminar");
+let rem: HTMLElement | null = document.getElementById("delete");
 if (rem != null) {
-    rem.innerHTML = "Eliminar webcomponent";
+    rem.innerHTML = "Delete webcomponent";
     rem.onclick = function () {
         let webcomponent: HTMLElement | null = document.querySelector('my-web-component');
         if (webcomponent != null) {
@@ -43,9 +45,9 @@ if (rem != null) {
         }
     }
 }
-let edit: HTMLElement | null = document.getElementById("editar");
+let edit: HTMLElement | null = document.getElementById("edit");
 if (edit != null) {
-    edit.innerHTML = "Editar webcomponent";
+    edit.innerHTML = "Edit webcomponent";
     edit.onclick = function () {
         let webcomponent: HTMLElement | null = document.querySelector('my-web-component');
         if (webcomponent != null) {

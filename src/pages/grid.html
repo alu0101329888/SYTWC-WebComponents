@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Top 3 news in USA</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles/grid_style.scss">
+        <script defer src="../code/grid.ts"></script>
+        <link rel="icon" href="../media/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div class="flex">
+            <div class="banner">
+                <a href="./index.html">
+                    <h1>Go back</h1>
+                </a>
+            </div>
+            <div id="my-grid"></div>
+        </div>
+        <template id="news-header">
+            <style>
+                h2 {
+                    font-size: 50px;
+                    font-family: Oswald;
+                    color: white;
+                    background-color: rgb(77, 0, 136);
+                    margin: 0px;
+                }
+
+                p {
+                    font-size: 20px;
+                    font-family: Oswald;
+                    color: white;
+                }
+
+                h3 {
+                    font-size: 50px;
+                    font-family: Oswald;
+                    color: white;
+                    background-color: rgb(77, 0, 136);
+                    margin: 0px;
+                }
+
+                .elements {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100%;
+                }
+
+                .elements > :last-child {
+                    margin-top: auto;
+                }
+
+                .elements > :nth-last-child(2) {
+                    margin-bottom: 20px;
+                }
+            </style>
+            <div class="elements">
+                <h2 id="title">This is the title</h2>
+                <p id="date">This is the moment it was posted</p>
+                <p id="source">This is who posted it</p>
+                <p id="desc">This is the description</p>
+                <a id="url" href="url"><h3>Continue reading</h3></a>
+            </div>
+        </template>
+    </body>
+</html>
