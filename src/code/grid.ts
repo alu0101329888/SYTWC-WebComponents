@@ -57,14 +57,26 @@ customElements.define("news-header", newsWebComponent);
 async function display() {
     const grid: HTMLElement | null = document.getElementById('my-grid');
 
-    const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&pageSize=3&apiKey=90afce725a864280b6503f7feb9ab277');
+    // const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&pageSize=3&apiKey=90afce725a864280b6503f7feb9ab277');
+    const response = await fetch('https://api.thenewsapi.com/v1/news/all?api_token=Su00ZCif0GSE516Jh6c568Sctza1K9mJUJQtimm9&language=en&limit=3');
     const data = await response.json();
-    data.articles.forEach((article: any) => {
+    // data.articles.forEach((article: any) => {
+    //     const newsElement = document.createElement('news-header');
+    //     newsElement.setAttribute('title', article.title);
+    //     newsElement.setAttribute('date', article.publishedAt);
+    //     newsElement.setAttribute('source', article.source.name);
+    //     newsElement.setAttribute('desc', article.content);
+    //     newsElement.setAttribute('url', article.url);
+    //     if (grid != null) {
+    //         grid.appendChild(newsElement);
+    //     }
+    // });
+    data.data.forEach((article: any) => {
         const newsElement = document.createElement('news-header');
         newsElement.setAttribute('title', article.title);
-        newsElement.setAttribute('date', article.publishedAt);
-        newsElement.setAttribute('source', article.source.name);
-        newsElement.setAttribute('desc', article.content);
+        newsElement.setAttribute('date', article.published_at);
+        newsElement.setAttribute('source', article.source);
+        newsElement.setAttribute('desc', article.snippet);
         newsElement.setAttribute('url', article.url);
         if (grid != null) {
             grid.appendChild(newsElement);
