@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.elements p {
+    font-size: 2vh;
+    font-family: Oswald;
+    color: white;
+}
+
+.elements h2 {
+    font-size: 5vh;
+    font-family: Oswald;
+    color: white;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.elements h3 {
+    font-size: 3vh;
+    font-family: Oswald;
+    color: rgb(77, 0, 136);
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+}
+
+.elements {
+    display: grid;
+    grid-template-columns: 10% 1fr 25% 10%;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    height: 100%;
+}
+
+.elements .title {
+    grid-column-start: span 4;
+    background-color: rgb(77, 0, 136);
+}
+
+.elements #date {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.elements #source {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.elements #desc {
+    display: flex;
+    align-items: center;
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.elements #img {
+    grid-row-start: span 2;
+    grid-column: 3;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.elements #ratings {
+    grid-row-start: span 2;
+    grid-column: 4;
+}
+
+.elements #url {
+    display: flex;
+    align-items: center;
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.elements #ratings {
+	background-color:#ffffff;
+	border-radius: 100px;
+	border: 1px solid #ffffff;
+	display: inline-block;
+	cursor: pointer;
+	color: rgb(105, 0, 175);
+	font-family: Oswald;
+	font-size: 4vh;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+    width: 75%;
+    grid-row-start: span 2;
+    margin: auto;
+}
+.elements #ratings:hover {
+	background-color:#e2b7ff;
+}
+.elements #ratings:active {
+	position:relative;
+	top:1px;
+}
+
+        
