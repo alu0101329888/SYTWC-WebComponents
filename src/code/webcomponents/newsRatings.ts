@@ -37,7 +37,7 @@ export class newsRatings extends HTMLElement {
         totalSum /= randomAmount;
         totalSum = Math.ceil(totalSum);
         stars = '';
-        for (let counter = 0; counter < totalSum; ++counter) {
+        for (let counter = 0; counter <= totalSum; ++counter) {
             stars += filledStar;
         }
         while (stars.length < 5) {
