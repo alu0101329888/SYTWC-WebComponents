@@ -14,7 +14,7 @@ export class navbar extends HTMLElement {
     connectedCallback() {
         this.shadowRoot?.querySelector('#go-back')?.addEventListener('click', () => {
             if (this.getAttribute('rating-opened') != 'true') {
-                window.location.href = '../pages/index.html';
+                window.location.href = 'https://alu0101329888.github.io/SYTWC-WebComponents/index.html';
             } else {
                 this.setAttribute('rating-opened', 'false');
 
