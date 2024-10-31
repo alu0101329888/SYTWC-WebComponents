@@ -1,0 +1,46 @@
+#ratings {
+    position: fixed;
+    z-index: 200;
+    top: 9%;
+    left: 0;
+    right: 0;
+    bottom: 9%;
+    background-color: rgb(20, 0, 35);
+    display: none;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+#ratings h1 {
+    padding-left: 10px;
+    font-size: 10vh;
+    font-family: Oswald;
+    color: white;
+}
+
+#ratings p {
+    padding-left: 10px;
+    font-size: 3vh;
+    font-family: Oswald;
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#ratings #comments {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#ratings .vote {
+    grid-column: 1;
+    grid-row: span;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

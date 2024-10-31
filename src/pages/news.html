@@ -4,33 +4,11 @@
         <title>Latest news</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <script defer src="../code/news.ts"></script>
-        <link rel="stylesheet" href="../styles/news_style.scss">
+        <script defer src="../code/news.ts" type="module"></script>
+        <link rel="stylesheet" href="../styles/news_style.scss" id="styles">
         <link rel="icon" href="../media/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <div class="navbar">
-            <h1>World News</h1>
-            <a href="./index.html">
-                <h1>Go back</h1>
-            </a>
-        </div>
-        <div id="news-list"></div>
-        <div class="footer"></div>
-
-        <template id="news-item">
-            <link rel="stylesheet" href="../styles/news_item_style.scss">
-            <div class="elements">
-                <div class="title">
-                    <h2 id="title">This is the title</h2>
-                </div>
-                <p id="date">This is the moment it was posted</p>
-                <p id="source">This is who posted it</p>
-                <p id="desc">This is the description</p>
-                <img id="img">
-                <button id="ratings" type="button">Ratings</button>
-                <a id="url" href="url"><h3>Continue reading</h3></a>
-            </div>
-        </template>
+        <div id="news-container"></div>
     </body>
 </html>

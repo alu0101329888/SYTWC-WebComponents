@@ -25,14 +25,21 @@
 .elements {
     display: grid;
     grid-template-columns: 10% 1fr 25% 10%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     gap: 10px;
     height: 100%;
 }
 
 .elements .title {
     grid-column-start: span 4;
+    grid-row: 1;
     background-color: rgb(77, 0, 136);
+}
+
+.elements .title h2 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .elements #date {
@@ -43,7 +50,7 @@
     grid-column: 1;
 }
 
-.elements #source {
+.elements #time {
     margin-left: 10px;
     display: flex;
     align-items: center;
@@ -51,34 +58,45 @@
     grid-column: 1;
 }
 
+.elements #source {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    grid-row: 4;
+    grid-column: 1;
+}
+
 .elements #desc {
     display: flex;
     align-items: center;
-    grid-row: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
     grid-column: 2;
 }
 
 .elements #img {
-    grid-row-start: span 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
     grid-column: 3;
     max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
+    margin: auto;
 }
 
-.elements #ratings {
-    grid-row-start: span 2;
+.elements #ratings-button {
+    grid-row-start: span 3;
     grid-column: 4;
 }
 
 .elements #url {
     display: flex;
     align-items: center;
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 2;
+    max-width: fit-content;
 }
 
-.elements #ratings {
+.elements #ratings-button {
 	background-color:#ffffff;
 	border-radius: 100px;
 	border: 1px solid #ffffff;
@@ -90,13 +108,13 @@
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #ffffff;
     width: 75%;
-    grid-row-start: span 2;
+    grid-row-start: span 3;
     margin: auto;
 }
-.elements #ratings:hover {
+.elements #ratings-button:hover {
 	background-color:#e2b7ff;
 }
-.elements #ratings:active {
+.elements #ratings-button:active {
 	position:relative;
 	top:1px;
 }

@@ -1,0 +1,11 @@
+#news-list {
+    position: absolute;
+    top: 7%;
+    margin-top: 30px;
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-auto-rows: 35vh;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 5%;
+}
