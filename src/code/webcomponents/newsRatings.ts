@@ -7,11 +7,11 @@ export class newsRatings extends HTMLElement {
         shadow.appendChild(templateContent.cloneNode(true));
     }
 
-    static get observedAttributes() {
+    static get observedAttributes(): string[] {
         return ['average', 'enabled'];
     }
 
-    async connectedCallback() {
+    async connectedCallback(): Promise<void> {
         let filledStar: string = '★';
         let emptyStar: string = '☆';
         let stars: string = '';
@@ -37,20 +37,20 @@ export class newsRatings extends HTMLElement {
         totalSum /= randomAmount;
         totalSum = Math.ceil(totalSum);
         stars = '';
-        for (let counter = 0; counter <= totalSum; ++counter) {
+        for (let counter: number = 0; counter <= totalSum; ++counter) {
             stars += filledStar;
         }
         while (stars.length < 5) {
             stars += emptyStar;
         }
         
-        const averageElement = this.shadowRoot?.getElementById('average');
+        const averageElement: HTMLElement | null | undefined = this.shadowRoot?.getElementById('average');
         if (averageElement) {
             averageElement.innerText = 'Rating: ' + stars;
         }
     }
 
-    attributeChangedCallback() {
+    attributeChangedCallback(): void {
         const ratingsDiv: HTMLDivElement = this.shadowRoot?.querySelector('#ratings') as HTMLDivElement;
         if (this.getAttribute('enabled') == 'true') {
             ratingsDiv.style.display = 'grid';
@@ -59,7 +59,7 @@ export class newsRatings extends HTMLElement {
         }
     }
 
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         
     }
 }

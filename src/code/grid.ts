@@ -1,26 +1,25 @@
 class newsWebComponent extends HTMLElement {
-
     constructor() {
         super();
         let template: HTMLTemplateElement = document.getElementById("news-header") as HTMLTemplateElement;
-        let templateContent = template.content;
+        let templateContent: DocumentFragment = template.content;
         const shadow: ShadowRoot = this.attachShadow({ mode: 'open' });
         shadow.appendChild(templateContent.cloneNode(true));
     }
 
-    static get observedAttributes() {
+    static get observedAttributes(): string[] {
         return ['title', 'date', 'source', 'desc', 'url'];
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         this.update();
     }
 
-    attributeChangedCallback() {
+    attributeChangedCallback(): void {
         this.update();
     }
 
-    update() {
+    update(): void {
         const title: string | null = this.getAttribute('title');
         const date: string | null = this.getAttribute('date');
         const source: string | null = this.getAttribute('source');
@@ -28,11 +27,11 @@ class newsWebComponent extends HTMLElement {
         const url: string | null = this.getAttribute('url');
 
         if (this.shadowRoot != null) {
-            const titleAttr = this.shadowRoot.getElementById('title');
-            const dateAttr = this.shadowRoot.getElementById('date');
-            const sourceAttr = this.shadowRoot.getElementById('source');
-            const descAttr = this.shadowRoot.getElementById('desc');
-            const urlAttr = this.shadowRoot.getElementById('url') as HTMLLinkElement;
+            const titleAttr: HTMLElement | null = this.shadowRoot.getElementById('title');
+            const dateAttr: HTMLElement | null = this.shadowRoot.getElementById('date');
+            const sourceAttr: HTMLElement | null = this.shadowRoot.getElementById('source');
+            const descAttr: HTMLElement | null = this.shadowRoot.getElementById('desc');
+            const urlAttr: HTMLLinkElement = this.shadowRoot.getElementById('url') as HTMLLinkElement;
 
             if (titleAttr != null) {
                 titleAttr.textContent = title;
@@ -54,12 +53,12 @@ class newsWebComponent extends HTMLElement {
 };
 
 customElements.define("news-header", newsWebComponent);
-async function display() {
+async function display(): Promise<void> {
     const grid: HTMLElement | null = document.getElementById('my-grid');
 
     // const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&pageSize=3&apiKey=90afce725a864280b6503f7feb9ab277');
-    const response = await fetch('https://api.thenewsapi.com/v1/news/all?api_token=Su00ZCif0GSE516Jh6c568Sctza1K9mJUJQtimm9&language=en&limit=3');
-    const data = await response.json();
+    const response: Response = await fetch('https://api.thenewsapi.com/v1/news/all?api_token=Su00ZCif0GSE516Jh6c568Sctza1K9mJUJQtimm9&language=en&limit=3');
+    const data: any = await response.json();
     // data.articles.forEach((article: any) => {
     //     const newsElement = document.createElement('news-header');
     //     newsElement.setAttribute('title', article.title);
@@ -71,7 +70,7 @@ async function display() {
     //         grid.appendChild(newsElement);
     //     }
     // });
-    data.data.forEach((article: any) => {
+    data.data.forEach((article: any): void => {
         const newsElement = document.createElement('news-header');
         newsElement.setAttribute('title', article.title);
         newsElement.setAttribute('date', article.published_at);

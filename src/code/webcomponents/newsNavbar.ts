@@ -7,18 +7,18 @@ export class navbar extends HTMLElement {
         shadow.appendChild(templateContent.cloneNode(true));
     }
 
-    static get observedAttributes() {
+    static get observedAttributes(): string[] {
         return ['rating-opened'];
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         this.shadowRoot?.querySelector('#go-back')?.addEventListener('click', () => {
             if (this.getAttribute('rating-opened') != 'true') {
                 window.location.href = 'https://alu0101329888.github.io/SYTWC-WebComponents/index.html';
             } else {
                 this.setAttribute('rating-opened', 'false');
 
-                const closeEvent = new CustomEvent('close-rating', {
+                const closeEvent: CustomEvent = new CustomEvent('close-rating', {
                     detail: {},
                     bubbles: true,
                     composed: true
@@ -29,7 +29,7 @@ export class navbar extends HTMLElement {
         });
     }
 
-    attributeChangedCallback() {
+    attributeChangedCallback(): void {
         const backButton: HTMLButtonElement = this.shadowRoot?.querySelector('#go-back') as HTMLButtonElement;
         if (this.getAttribute('rating-opened') == 'true') {
             backButton.innerText = "Close";

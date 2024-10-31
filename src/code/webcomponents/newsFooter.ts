@@ -9,19 +9,19 @@ export class footer extends HTMLElement {
         shadow.appendChild(templateContent.cloneNode(true));
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         this.updateTime();
         this.time = window.setInterval(() => this.updateTime(), 1000);
     }
 
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         if (this.time !== null) {
             clearInterval(this.time);
         }
     }
 
-    updateTime() {
-        const currentTime = new Date().toLocaleTimeString();
+    updateTime(): void {
+        const currentTime: string = new Date().toLocaleTimeString();
         const footerText: HTMLElement | null | undefined = this.shadowRoot?.getElementById('time');
         if (footerText) {
             footerText.textContent = `Current time: ${currentTime}`;

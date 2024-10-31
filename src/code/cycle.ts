@@ -1,5 +1,4 @@
 class myWebComponent extends HTMLElement {
-
     constructor() {
         super();
         let webcomponent: HTMLElement = document.createElement("p");
@@ -9,19 +8,19 @@ class myWebComponent extends HTMLElement {
         console.log("Created");
     }
 
-    static get observedAttributes() {
+    static get observedAttributes(): string[] {
         return ["color"];
     } 
 
-    connectedCallback() {
+    connectedCallback(): void {
         console.log("Added to DOM");
     }
 
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         console.log("Removed from DOM");
     }
 
-    attributeChangedCallback() {
+    attributeChangedCallback(): void {
         console.log("Changed attributes");
     }
 };

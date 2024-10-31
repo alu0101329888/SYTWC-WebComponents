@@ -10,11 +10,11 @@ export class newsContainer extends HTMLElement {
         this.loadTemplates();
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         console.log("Connected");
     }
 
-    async loadTemplates() {
+    async loadTemplates(): Promise<void> {
         let templateNavbar: HTMLTemplateElement = document.createElement('template');
         templateNavbar.innerHTML = await (await fetch(new URL('../../pages/templates/navbar_template.html', import.meta.url))).text();
         document.body.appendChild(templateNavbar.content.cloneNode(true));
@@ -39,7 +39,7 @@ export class newsContainer extends HTMLElement {
         this.loadFooter();
     }
 
-    loadNavbar() {
+    loadNavbar(): void {
         const newsNavbarElement: navbar = document.createElement('navbar-element') as navbar;
         newsNavbarElement.addEventListener('close-rating', ((event: CustomEvent) => {
             (this.shadowRoot?.querySelectorAll('ratings-element') as NodeListOf<newsRatings>).forEach((rating: newsRatings) => {
@@ -49,7 +49,7 @@ export class newsContainer extends HTMLElement {
         this.shadowRoot?.appendChild(newsNavbarElement);
     }
 
-    async loadNews() {
+    async loadNews(): Promise<void> {
         let div: HTMLDivElement = document.createElement('div');
         div.id = 'news-list';
         let style: HTMLStyleElement = document.createElement('style')
@@ -58,8 +58,8 @@ export class newsContainer extends HTMLElement {
         this.shadowRoot?.appendChild(div);
         const container: HTMLElement | null | undefined = this.shadowRoot?.getElementById('news-list');
     
-        const response = await fetch('https://newsdata.io/api/1/latest?apikey=pub_577455afabf3e7c3c90e8bdc2510d5cc2dc9f&language=en');
-        const data = await response.json();
+        const response: Response = await fetch('https://newsdata.io/api/1/latest?apikey=pub_577455afabf3e7c3c90e8bdc2510d5cc2dc9f&language=en');
+        const data: any = await response.json();
         // let data = JSON.parse(`
         // {
         //     "status": "success",
@@ -412,7 +412,7 @@ export class newsContainer extends HTMLElement {
         //     }
         // `);
     
-        data.results.forEach((article: any) => {
+        data.results.forEach((article: any): void => {
             const newsItemElement: newsItem = document.createElement('news-item') as newsItem;
             newsItemElement.setAttribute('title', article.title);
             newsItemElement.setAttribute('date', article.pubDate);
@@ -429,11 +429,11 @@ export class newsContainer extends HTMLElement {
             this.loadRating(article.article_id);
 
             newsItemElement.addEventListener('rating-clicked', ((event: CustomEvent) => {
-                const articleId = event.detail.article_id;
+                const articleId: string = event.detail.article_id;
                 const newsRatingElement: newsRatings = this.shadowRoot?.querySelector(`ratings-element[article_id="${articleId}"]`) as newsRatings;
 
                 if (newsRatingElement) {
-                    const isEnabled = newsRatingElement.getAttribute('enabled') == 'true';
+                    const isEnabled: boolean = newsRatingElement.getAttribute('enabled') == 'true';
                     newsRatingElement.setAttribute('enabled', (!isEnabled).toString());
                     const navbar: navbar = this.shadowRoot?.querySelector(`navbar-element`) as navbar;
                     if (navbar) {
@@ -448,38 +448,36 @@ export class newsContainer extends HTMLElement {
         });
     }
 
-    loadFooter() {
+    loadFooter(): void {
         const newsFooterElement: navbar = document.createElement('footer-element') as navbar;
         this.shadowRoot?.appendChild(newsFooterElement);
 
-        newsFooterElement.addEventListener('time-updated', ((event: CustomEvent) => {
+        newsFooterElement.addEventListener('time-updated', ((event: CustomEvent): void => {
             this.updateTimes(event);
         }) as EventListener);
     }
 
-    loadRating(article_id: string) {
+    loadRating(article_id: string): void {
         const newsRatingsElement: newsRatings = document.createElement('ratings-element') as newsRatings;
         newsRatingsElement.setAttribute('article_id', article_id);
         this.shadowRoot?.appendChild(newsRatingsElement);
     }
 
-    updateTimes(event: CustomEvent) {
-        const { currentTime } = event.detail;
-
+    updateTimes(event: CustomEvent): void {
         const newsItems: NodeListOf<newsItem> = this.shadowRoot?.querySelectorAll('news-item') as NodeListOf<newsItem>;
-        const now: Date = new Date()
+        const now: Date = new Date();
 
         newsItems.forEach((item) => {
             const dateAttr = item.getAttribute('date');
             if (dateAttr != null) {
                 const dateValue: number = new Date(dateAttr).getTime();
-                const timeDifference = now.getTime() - dateValue;
+                const timeDifference: number = now.getTime() - dateValue;
 
-                let totalTime = Math.floor(timeDifference / 1000);
-                let days = Math.floor(totalTime / (24 * 3600));
-                let hours = Math.floor((totalTime % (24 * 3600)) / 3600);
-                let minutes = Math.floor((totalTime % 3600) / 60);
-                let seconds = totalTime % 60;
+                let totalTime : number= Math.floor(timeDifference / 1000);
+                let days: number = Math.floor(totalTime / (24 * 3600));
+                let hours: number = Math.floor((totalTime % (24 * 3600)) / 3600);
+                let minutes: number = Math.floor((totalTime % 3600) / 60);
+                let seconds: number = totalTime % 60;
                 item.setAttribute('time', `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
             }
         });

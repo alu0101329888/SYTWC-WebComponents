@@ -14,19 +14,19 @@ export class newsItem extends HTMLElement {
         }
     }
 
-    static get observedAttributes() {
+    static get observedAttributes(): string[] {
         return ['title', 'date', 'source', 'desc', 'url', 'img', 'time'];
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         this.update();
     }
 
-    attributeChangedCallback() {
+    attributeChangedCallback(): void {
         this.update();
     }
 
-    update() {
+    update(): void {
         const title: string | null = this.getAttribute('title');
         const date: string | null = this.getAttribute('date');
         const source: string | null = this.getAttribute('source');
@@ -68,13 +68,13 @@ export class newsItem extends HTMLElement {
         }
     }
 
-    callRatingEvent() {
-        const articleId = this.getAttribute('article_id');
-        const eventDetail = {
+    callRatingEvent(): void {
+        const articleId: string | null = this.getAttribute('article_id');
+        const eventDetail: object = {
             article_id: articleId,
         };
 
-        const ratingClickedEvent = new CustomEvent('rating-clicked', {
+        const ratingClickedEvent: CustomEvent = new CustomEvent('rating-clicked', {
             detail: eventDetail,
             bubbles: true,
             composed: true
